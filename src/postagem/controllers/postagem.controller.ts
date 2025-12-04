@@ -1,41 +1,51 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, Delete } from "@nestjs/common";
-import { PostagemService } from "../services/postagem.service";
-import { Postagem } from "../entities/Postagem.entity";
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+  Delete,
+} from '@nestjs/common';
+import { PostagemService } from '../services/postagem.service';
+import { Postagem } from '../entities/Postagem.entity';
 
 @Controller('/postagens')
-export class PostagemController{
-  constructor(private readonly postagemService:PostagemService){}  
-  
+export class PostagemController {
+  constructor(private readonly postagemService: PostagemService) {}
+
   @Get()
   @HttpCode(HttpStatus.OK)
-  findAll():Promise<Postagem[]>{
+  findAll(): Promise<Postagem[]> {
     return this.postagemService.findAll();
   }
 
   @Get('/:id')
   @HttpCode(HttpStatus.OK)
-  findById(@Param('id',ParseIntPipe)id:number): Promise<Postagem>{
-   return this.postagemService.findById(id);
+  findById(@Param('id', ParseIntPipe) id: number): Promise<Postagem> {
+    return this.postagemService.findById(id);
   }
-   @Post()
-   @HttpCode(HttpStatus.CREATED)
-   create(@Body() postagem:Postagem):Promise<Postagem>{
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  create(@Body() postagem: Postagem): Promise<Postagem> {
     return this.postagemService.create(postagem);
   }
   @Put()
   @HttpCode(HttpStatus.OK)
-  update(@Body() postagem:Postagem):Promise<Postagem>{
+  update(@Body() postagem: Postagem): Promise<Postagem> {
     return this.postagemService.update(postagem);
   }
   @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  delete(@Param('id', ParseIntPipe) id:number){
-   return this.postagemService.delete(id);
+  delete(@Param('id', ParseIntPipe) id: number) {
+    return this.postagemService.delete(id);
   }
   @Get('/titulo/:titulo')
   @HttpCode(HttpStatus.OK)
-  findByAllTitulo(@Param('titulo') titulo:string):Promise<Postagem[]>{
+  findByAllTitulo(@Param('titulo') titulo: string): Promise<Postagem[]> {
     return this.postagemService.findAllByTitulo(titulo);
   }
-};
-
+}
