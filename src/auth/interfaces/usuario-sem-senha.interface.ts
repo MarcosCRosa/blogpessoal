@@ -1,4 +1,4 @@
-import { Postagem } from "../../postagem/entities/Postagem.entity";
+import { Postagem } from "../../postagem/entities/postagem.entity";
 
 export interface UsuarioSemSenha {
     id:number;

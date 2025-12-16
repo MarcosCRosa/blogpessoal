@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Postagem } from "../../postagem/entities/Postagem.entity";
+import { Postagem } from "../../postagem/entities/postagem.entity";
 import { IsEmail, IsNotEmpty, MinLength } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
